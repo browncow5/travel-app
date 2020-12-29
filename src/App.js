@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import { Logger } from 'aws-amplify';
+
 
 const sampleJSON = {
   "business_status" : "CLOSED_TEMPORARILY",
