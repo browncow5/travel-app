@@ -1,6 +1,6 @@
 {
   "api": {
-    "travelapp": {
+    "travelappapi": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -8,15 +8,11 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "This is an api key"
+              "apiKeyExpirationDays": 14,
+              "description": "Desc api key travel app remade"
             }
           },
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AWS_IAM"
-            }
-          ]
+          "additionalAuthenticationProviders": []
         }
       }
     }
