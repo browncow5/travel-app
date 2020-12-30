@@ -1,0 +1,13 @@
+type Places @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  types: [String]
+  description: String
+  business_status: String
+  url: String
+  website: String
+  formatted_phone_number: String
+  rating: Float
+  user_ratings_total: Int
+}
+ 

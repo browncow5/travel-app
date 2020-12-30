@@ -1,0 +1,12 @@
+type Place @model {
+  id: ID!
+  name: String!
+  description: String
+  types: [String]
+  business_status: String
+  formatted_phone_number: String
+  rating: Float
+  user_ratings_total: Int
+  url: String
+  website: String
+}
