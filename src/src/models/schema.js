@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Place": {
-            "name": "Place",
+        "Places": {
+            "name": "Places",
             "fields": {
                 "id": {
                     "name": "id",
@@ -103,5 +103,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "0f7894efd9345a7b4660c0261b482912"
+    "version": "19b44867a160b7877422c9d0a38f4eea"
 };

@@ -1,6 +1,12 @@
 import './App.css';
 import { Component } from 'react';
-import { Logger } from 'aws-amplify';
+
+import awsconfig from './aws-exports';
+//import { Logger } from 'aws-amplify';
+//import { DataStore } from '@aws-amplify/datastore';
+//import { Place } from './models';
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import { listPlaces } from './graphql/queries';
 
 
 const sampleJSON = {
@@ -14,7 +20,6 @@ const sampleJSON = {
   "user_ratings_total" : 5063,
   "website" : "http://www.dishoom.com/"
 };
-
 
 
 class AddPlace extends Component{
@@ -64,11 +69,10 @@ class PlaceList extends Component {
     super ();
   }
 
-
   render (){
-    let item2 = <PlaceItem message={sampleJSON.name} />;
-    let item3 = <PlaceItem message="another message" />;
-    let item4 = <PlaceItem message="one more task" />;
+    let item2 = <PlaceItem key="1" message={sampleJSON.name} />;
+    let item3 = <PlaceItem key="2" message="test test test" />;
+    let item4 = <PlaceItem key="3" message="one more task" />;
 
     let allTheThings = [item2, item3, item4];
     let items = allTheThings.map(thing => thing);
@@ -78,6 +82,31 @@ class PlaceList extends Component {
   }
 }
 
+class ApiObject extends Component {
+  async componentDidMount() {
+    try {
+      //const models = await DataStore.query(Place);
+      //console.log(models);
+      const allPlaces = await API.graphql(graphqlOperation(listPlaces));
+      console.log(allPlaces); // result: { "data": { "listTodos": { "items": [/* ..... */] } } }
+    } catch (error) {
+      console.log("Error retrieving Places", error);
+      console.log(error.response);
+    }
+  }
+  render (){
+    return(
+      <div>
+        <h4>
+          TEXT
+        </h4>
+      </div>
+    );
+  }
+}
+
+Amplify.configure(awsconfig)
+
 function App() {
   return (
     <div className="App">
@@ -86,6 +115,7 @@ function App() {
       </header>
       <AddPlace></AddPlace>
       <PlaceList></PlaceList>
+      <ApiObject></ApiObject>
     </div>
   );
 }

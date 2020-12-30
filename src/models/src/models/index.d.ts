@@ -4,7 +4,7 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-export declare class Place {
+export declare class Places {
   readonly id: string;
   readonly name: string;
   readonly types?: (string | null)[];
@@ -15,6 +15,6 @@ export declare class Place {
   readonly formatted_phone_number?: string;
   readonly rating?: number;
   readonly user_ratings_total?: number;
-  constructor(init: ModelInit<Place>);
-  static copyOf(source: Place, mutator: (draft: MutableModel<Place>) => MutableModel<Place> | void): Place;
+  constructor(init: ModelInit<Places>);
+  static copyOf(source: Places, mutator: (draft: MutableModel<Places>) => MutableModel<Places> | void): Places;
 }
